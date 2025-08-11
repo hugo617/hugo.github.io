@@ -295,3 +295,24 @@ Switch project Ruby to 3.2.4 for better compatibility and easier native gem buil
 **Result:** Pending. Run the above commands locally. After bundle install completes, visit http://localhost:3000/users to verify.
 
 ---
+
+## Step 14: Fix Logger NameError under Ruby 3.2 by preloading Logger
+**Command:**
+```
+# Edit config/boot.rb to load stdlib Logger before ActiveSupport
+# (Applied in repo)
+# Ensure spring preloader is stopped so changes take effect
+bin/spring stop || true
+
+# Start server
+bin/rails s
+```
+
+**Description:**
+ActiveSupport 6.1.7.x references Logger::Severity during initialization. Under Ruby 3.2, Logger is not autoloaded by default in this path, causing `uninitialized constant Logger`. Preloading Logger at the very top of config/boot.rb resolves the issue reliably, even with bootsnap enabled.
+
+**Execution Time:** 2025-08-11 13:25:00
+
+**Result:** After preloading Logger and stopping spring, Rails server starts successfully and /users responds.
+
+---
