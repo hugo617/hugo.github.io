@@ -198,7 +198,6 @@ Update controller to fetch all users from database.
 
 ---
 ## Step 11: Initialize Git Repository
-## Step 11: Initialize Git Repository
 **Command:**
 ```
 git init
@@ -250,5 +249,49 @@ Initialize Git repository, configure user settings, connect to remote repository
 **Execution Time:** 2025-08-11 12:51:07
 
 **Result:** See below outputs.
+
+---
+
+## Step 13: Upgrade Ruby to 3.2.4 via rbenv and re-enable bootsnap
+**Command:**
+```
+# Update version declarations
+sed -n '1p' .ruby-version && echo "(before)"
+echo "3.2.4" > .ruby-version
+
+# Update Gemfile ruby version (already applied in repo)
+# ruby '3.2.4'
+
+# Install Ruby 3.2.4 with rbenv
+brew update && brew upgrade rbenv ruby-build
+rbenv install 3.2.4
+rbenv local 3.2.4
+rbenv rehash
+ruby -v
+
+# Install bundler and gems
+gem install bundler -v 2.4.22
+bundle config set --local path 'vendor/bundle'
+# Optional mirror if needed for speed/stability:
+# bundle config set --local mirror.https://rubygems.org https://gems.ruby-china.com
+bundle install
+
+# Handle mysql2 native compilation if needed
+brew install mysql@8.4 || true
+bundle config set build.mysql2 "--with-mysql-config=$(brew --prefix mysql@8.4)/bin/mysql_config"
+bundle install
+
+# Re-enable bootsnap (already re-enabled in Gemfile and config/boot.rb)
+
+# Start Rails server
+bin/rails s
+```
+
+**Description:**
+Switch project Ruby to 3.2.4 for better compatibility and easier native gem builds. Re-enabled bootsnap for faster boot.
+
+**Execution Time:** 2025-08-11 13:10:00
+
+**Result:** Pending. Run the above commands locally. After bundle install completes, visit http://localhost:3000/users to verify.
 
 ---
