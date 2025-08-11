@@ -1,0 +1,33 @@
+current directory: /Users/star/hugo/Others/202508/blog/vendor/bundle/ruby/2.6.0/gems/puma-5.6.9/ext/puma_http11
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby extconf.rb
+checking for BIO_read() in -lcrypto... yes
+checking for SSL_CTX_new() in -lssl... yes
+checking for openssl/bio.h... yes
+checking for DTLS_method() in openssl/ssl.h... yes
+checking for TLS_server_method() in openssl/ssl.h... yes
+checking for SSL_CTX_set_min_proto_version(NULL, 0) in openssl/ssl.h... yes
+checking for X509_STORE_up_ref()... yes
+checking for SSL_CTX_set_ecdh_auto(NULL, 0) in openssl/ssl.h... yes
+checking for SSL_CTX_set_dh_auto(NULL, 0) in openssl/ssl.h... yes
+checking for SSL_get1_peer_certificate() in openssl/ssl.h... yes
+checking for Random.bytes... yes
+creating Makefile
+
+current directory: /Users/star/hugo/Others/202508/blog/vendor/bundle/ruby/2.6.0/gems/puma-5.6.9/ext/puma_http11
+make DESTDIR\= sitearchdir\=./.gem.20250811-93601-1ik5cij sitelibdir\=./.gem.20250811-93601-1ik5cij clean
+
+current directory: /Users/star/hugo/Others/202508/blog/vendor/bundle/ruby/2.6.0/gems/puma-5.6.9/ext/puma_http11
+make DESTDIR\= sitearchdir\=./.gem.20250811-93601-1ik5cij sitelibdir\=./.gem.20250811-93601-1ik5cij
+compiling http11_parser.c
+compiling mini_ssl.c
+compiling puma_http11.c
+linking shared-object puma/puma_http11.bundle
+ld: warning: search path '/AppleInternal/Library/BuildRoots/1c8f7852-1ca9-11f0-b28b-226177e5bb69/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.Internal.sdk/usr/local/libressl-by-deployment-target/14.0/lib' not found
+ld: warning: search path '/AppleInternal/Library/BuildRoots/1c8f7852-1ca9-11f0-b28b-226177e5bb69/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.Internal.sdk/usr/local/lib' not found
+
+current directory: /Users/star/hugo/Others/202508/blog/vendor/bundle/ruby/2.6.0/gems/puma-5.6.9/ext/puma_http11
+make DESTDIR\= sitearchdir\=./.gem.20250811-93601-1ik5cij sitelibdir\=./.gem.20250811-93601-1ik5cij install
+/usr/bin/install -c -m 0755 puma_http11.bundle ./.gem.20250811-93601-1ik5cij/puma
+
+current directory: /Users/star/hugo/Others/202508/blog/vendor/bundle/ruby/2.6.0/gems/puma-5.6.9/ext/puma_http11
+make DESTDIR\= sitearchdir\=./.gem.20250811-93601-1ik5cij sitelibdir\=./.gem.20250811-93601-1ik5cij clean

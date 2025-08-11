@@ -198,6 +198,42 @@ Update controller to fetch all users from database.
 
 ---
 ## Step 11: Initialize Git Repository
+## Step 11: Initialize Git Repository
+**Command:**
+```
+git init
+git config user.name "hugo617"
+git config user.email "3383799388@qq.com"
+git remote add origin https://github.com/hugo617/hugo.github.io.git
+git add .
+git commit -m "Initial Rails project setup"
+git push -u origin master
+```
+
+**Description:**
+Initialize Git repository, configure user settings, connect to remote repository, and push initial commit.
+
+**Execution Time:** 2025-08-11 12:45:00
+
+**Result:** Success. Initial commit pushed and branch master set to track origin/master.
+
+---
+
+## Step 12: Start Rails Server
+**Command:**
+```
+rails server
+```
+
+**Description:**
+Start Rails development server. Access the application at http://localhost:3000/users.
+
+**Execution Time:** 2025-08-11 12:50:00
+
+**Result:** Pending. Bundler installation from rubygems.org is timing out, and bootsnap native dependency failed to compile for Ruby 2.6 on macOS 15 SDK. We created minimal MVC files and routes; once bundle install completes, server should boot and /users should be available. As a temporary workaround, you can comment out `gem 'bootsnap'` and `require 'bootsnap/setup'` in config/boot.rb before first boot, then re-enable after resolving native gem builds.
+
+---
+
 **Command:**
 
 git init
