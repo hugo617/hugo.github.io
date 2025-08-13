@@ -18,5 +18,8 @@ module Blog
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Add Rack::Attack middleware for rate limiting (removed for session-based auth)
+    # config.middleware.use Rack::Attack
   end
 end
