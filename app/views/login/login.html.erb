@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>艺术风格登录页面</title>
+    <%= stylesheet_link_tag 'login', 'data-turbo-track': 'reload' %>
+</head>
+<body>
+    <!-- 登录页面主容器 -->
+    <div class="login-container">
+        <!-- 页面头部 -->
+        <header>
+            <h1>欢迎回来</h1>
+            <p class="subtitle">请登录您的账户</p>
+        </header>
+
+        <!-- 主要内容区 -->
+        <main>
+            <!-- 登录表单 -->
+            <%= form_with url: login_path, method: :post, local: true, id: "loginForm" do |form| %>
+                <!-- 用户名输入框 -->
+                <div class="input-group" id="usernameGroup">
+                    <%= form.text_field :username, 
+                        id: "username", 
+                        name: "username", 
+                        placeholder: " ",
+                        autocomplete: "username" %>
+                    <label for="username">用户名</label>
+                    <span class="error-tip" id="usernameError">请输入用户名</span>
+                </div>
+
+                <!-- 密码输入框 -->
+                <div class="input-group" id="passwordGroup">
+                    <%= form.password_field :password, 
+                        id: "password", 
+                        name: "password", 
+                        placeholder: " ",
+                        autocomplete: "current-password" %>
+                    <label for="password">密码</label>
+                    <span class="error-tip" id="passwordError">请输入密码</span>
+                </div>
+
+                <!-- 提交按钮 -->
+                <%= form.submit "登录", class: "submit-btn", type: "submit" %>
+            <% end %>
+        </main>
+
+        <!-- 页脚 -->
+        <footer>
+            <a href="#">忘记密码？</a>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username');
+            const password = document.getElementById('password');
+            const usernameGroup = document.getElementById('usernameGroup');
+            const passwordGroup = document.getElementById('passwordGroup');
+            const usernameError = document.getElementById('usernameError');
+            const passwordError = document.getElementById('passwordError');
+            
+            // 重置错误状态
+            usernameGroup.classList.remove('error');
+            passwordGroup.classList.remove('error');
+            usernameError.classList.remove('show');
+            passwordError.classList.remove('show');
+            
+            let hasError = false;
+            
+            // 验证用户名
+            if (!username.value.trim()) {
+                usernameGroup.classList.add('error');
+                usernameError.textContent = '请输入用户名';
+                usernameError.classList.add('show');
+                hasError = true;
+            }
+            
+            // 验证密码
+            if (!password.value.trim()) {
+                passwordGroup.classList.add('error');
+                passwordError.textContent = '请输入密码';
+                passwordError.classList.add('show');
+                hasError = true;
+            } else if (password.value.length < 8) {
+                passwordGroup.classList.add('error');
+                passwordError.textContent = '密码至少需要8个字符';
+                passwordError.classList.add('show');
+                hasError = true;
+            }
+            
+            // 如果没有错误，可以提交表单
+            if (!hasError) {
+                // 这里可以添加实际的登录逻辑
+                console.log('表单验证通过，可以提交');
+            }
+        });
+        
+        // 输入时清除错误状态
+        document.getElementById('username').addEventListener('input', function() {
+            const usernameGroup = document.getElementById('usernameGroup');
+            const usernameError = document.getElementById('usernameError');
+            
+            if (this.value.trim()) {
+                usernameGroup.classList.remove('error');
+                usernameError.classList.remove('show');
+            }
+        });
+        
+        document.getElementById('password').addEventListener('input', function() {
+            const passwordGroup = document.getElementById('passwordGroup');
+            const passwordError = document.getElementById('passwordError');
+            
+            if (this.value.trim() && this.value.length >= 8) {
+                passwordGroup.classList.remove('error');
+                passwordError.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
